@@ -1,0 +1,35 @@
+name: Build blink65
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install cc65
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cc65
+
+      - name: Build project
+        run: make
+
+      - name: Upload Library binaries
+        uses: actions/upload-artifact@v6
+        with:
+          name: blink65-lib
+          path: |
+            library/build/
+
+      - name: Upload Library examples
+        uses: actions/upload-artifact@v6
+        with:
+          name: blink65-examples
+          path: |
+            examples/blink/build/
