@@ -1,6 +1,6 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-# path to blibk65 library
+# path to blink65 library
 LIB = ../../library/build
 
 # main make targets
@@ -42,14 +42,18 @@ all: $(ALL_PRGS)
 # $(2) = one of CONFIGS
 define PRG_TEMPLATE
 # prg file name
+OBJ_$(1)_$(2) := obj/blink$(SFX_$(1))$(if $(filter debug,$(2)),d).o
 PRG_$(1)_$(2) := build/blink$(SFX_$(1))$(if $(filter debug,$(2)),d).prg
 LIB_$(1)_$(2) := $(LIB)/$(1)/blink65$(if $(filter debug,$(2)),d).lib
 FLG_$(1)_$(2) := $(if $(filter debug,$(2)),-DDEBUG=1)
 
-# build example
-$$(PRG_$(1)_$(2)): blink.c $(LIB)/blink65.h | setup
-	cl65 -t $(1) $(CFG_$(1)) $$(FLG_$(1)_$(2)) -I $(LIB) -o $$@ $$< \
-		$$(LIB_$(1)_$(2))
+# compile example
+$$(OBJ_$(1)_$(2)): blink.c $(LIB)/blink65.h | setup
+	cl65 -t $(1) -c $$(FLG_$(1)_$(2)) -I $(LIB) -o $$@ $$<
+
+# link example
+$$(PRG_$(1)_$(2)): $$(OBJ_$(1)_$(2)) $$(LIB_$(1)_$(2)) | setup
+	cl65 -t $(1) $(CFG_$(1)) -o $$@ $$^
 endef
 
 # generate rules for all combinations of targets and configs
@@ -60,10 +64,10 @@ $(foreach t,$(TARGETS),\
 )
 
 setup:
-	-@$(MKDIR) build
+	-@$(MKDIR) build obj
 
 # - CLEAN --------------------------------------------------------------------
 clean:
-	-$(RMDIR) build
+	-$(RMDIR) build obj
 
 #-----------------------------------------------------------------------------

@@ -1,13 +1,11 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-SUBDIRS = library examples alternatives
+SUBDIRS = blinkbasic64
 
 .PHONY: all clean $(SUBDIRS)
 
 #- BUILD ---------------------------------------------------------------------
 all: $(SUBDIRS)
-
-examples: library
 
 $(SUBDIRS):
 	$(MAKE) -C $@

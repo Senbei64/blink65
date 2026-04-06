@@ -1,6 +1,6 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-SUBDIRS = blink
+SUBDIRS = blink simple64
 
 .PHONY: all clean $(SUBDIRS)
 

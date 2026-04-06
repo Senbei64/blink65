@@ -1,23 +1,15 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-SUBDIRS = library examples alternatives
-
-.PHONY: all clean $(SUBDIRS)
-
 #- BUILD ---------------------------------------------------------------------
-all: $(SUBDIRS)
-
-examples: library
-
-$(SUBDIRS):
-	$(MAKE) -C $@
+blinkbasic64.prg: blinkbasic64.bas
+	petcat -w2 -o blinkbasic64.prg -- blinkbasic64.bas
 
 #- CLEAN ---------------------------------------------------------------------
 clean:
 ifeq ($(OS),Windows_NT)
-	@for %%d in ($(SUBDIRS)) do $(MAKE) -C %%d clean
+	-del /q /f blinkbasic64.prg
 else
-	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir clean; done
+	-rm -f blinkbasic64.prg
 endif
 
 #-----------------------------------------------------------------------------
