@@ -4,4 +4,5 @@
 *.prg
 bin
 build
+docs
 obj

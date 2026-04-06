@@ -1,0 +1,22 @@
+#- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
+
+PROJECT_NAME           = "blink65"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "Write Arduino-style sketches for VIC-20 and Commodore 64."
+
+INPUT                  = README.md library/ 
+FILE_PATTERNS          = *.h *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+EXCLUDE                = library/build/
+STRIP_FROM_PATH        = library/
+
+OPTIMIZE_OUTPUT_FOR_C  = YES
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+EXTRACT_ALL            = YES
+CASE_SENSE_NAMES       = YES
+
+HTML_OUTPUT            = docs
+HTML_FILE_EXTENSION    = .html
+GENERATE_LATEX         = NO
