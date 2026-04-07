@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['num_5fanalog_5finputs_0',['num_analog_inputs',['../c64_2pins_8h.html#ae5fbabd52e1f2240307dfc9bfaefb5d6',1,'NUM_ANALOG_INPUTS:&#160;pins.h'],['../pet_2pins_8h.html#ae5fbabd52e1f2240307dfc9bfaefb5d6',1,'NUM_ANALOG_INPUTS:&#160;pins.h'],['../vic20_2pins_8h.html#ae5fbabd52e1f2240307dfc9bfaefb5d6',1,'NUM_ANALOG_INPUTS:&#160;pins.h']]],
-  ['num_5fdigital_5fpins_1',['num_digital_pins',['../c64_2pins_8h.html#a0ef783fbc452748b33c5a307d0565f7a',1,'NUM_DIGITAL_PINS:&#160;pins.h'],['../pet_2pins_8h.html#a0ef783fbc452748b33c5a307d0565f7a',1,'NUM_DIGITAL_PINS:&#160;pins.h'],['../vic20_2pins_8h.html#a0ef783fbc452748b33c5a307d0565f7a',1,'NUM_DIGITAL_PINS:&#160;pins.h']]]
+  ['led_5fbuiltin_0',['led_builtin',['../c64_2pins_8h.html#a450a7c16ead7b3c7b882536b08f30a00',1,'LED_BUILTIN:&#160;pins.h'],['../pet_2pins_8h.html#a450a7c16ead7b3c7b882536b08f30a00',1,'LED_BUILTIN:&#160;pins.h'],['../vic20_2pins_8h.html#a450a7c16ead7b3c7b882536b08f30a00',1,'LED_BUILTIN:&#160;pins.h']]],
+  ['loop_1',['loop',['../blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f',1,'blink65.h']]],
+  ['low_2',['LOW',['../blink65_8h.html#ab811d8c6ff3a505312d3276590444289',1,'blink65.h']]]
 ];

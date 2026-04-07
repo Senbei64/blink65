@@ -73,7 +73,36 @@ $(function() {
   <div class="headertitle"><div class="title">blink65 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__2home_2runner_2work_2blink65_2blink65_2README"></a>Write Arduino-style sketches for VIC-20 and Commodore 64. </p>
+<div class="textblock"><p><a class="anchor" id="md__2home_2runner_2work_2blink65_2blink65_2README"></a>Write Arduino-style sketches for VIC-20 and Commodore 64.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Arduino-style API</h2>
+<p>This example summarizes the Arduino-style API implemented so far: </p><div class="fragment"><div class="line">void setup(void)</div>
+<div class="line">{</div>
+<div class="line">    pinMode(LED_BUILTIN, OUTPUT);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">void loop(void)</div>
+<div class="line">{</div>
+<div class="line">    digitalWrite(LED_BUILTIN, HIGH);</div>
+<div class="line">    delay(1000);</div>
+<div class="line">    digitalWrite(LED_BUILTIN, LOW);</div>
+<div class="line">    delay(1000);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+Commodore User Port</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">1   </th><th class="markdownTableHeadCenter">2   </th><th class="markdownTableHeadCenter">3   </th><th class="markdownTableHeadCenter">4   </th><th class="markdownTableHeadCenter">5   </th><th class="markdownTableHeadCenter">6   </th><th class="markdownTableHeadCenter">7   </th><th class="markdownTableHeadCenter">8   </th><th class="markdownTableHeadCenter">9   </th><th class="markdownTableHeadCenter">10   </th><th class="markdownTableHeadCenter">11   </th><th class="markdownTableHeadCenter">12    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">GND   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">_(1)_   </td><td class="markdownTableBodyCenter">GND    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">GND   </td><td class="markdownTableBodyCenter">_(2)_   </td><td class="markdownTableBodyCenter">I/O 0   </td><td class="markdownTableBodyCenter">I/O 1   </td><td class="markdownTableBodyCenter">I/O 2   </td><td class="markdownTableBodyCenter">I/O 3   </td><td class="markdownTableBodyCenter">I/O 4   </td><td class="markdownTableBodyCenter">I/O 5   </td><td class="markdownTableBodyCenter">I/O 6   </td><td class="markdownTableBodyCenter">I/O 7   </td><td class="markdownTableBodyCenter">_(2)_   </td><td class="markdownTableBodyCenter">GND    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter"><b>A</b>   </td><td class="markdownTableBodyCenter"><b>B</b>   </td><td class="markdownTableBodyCenter"><b>C</b>   </td><td class="markdownTableBodyCenter"><b>D</b>   </td><td class="markdownTableBodyCenter"><b>E</b>   </td><td class="markdownTableBodyCenter"><b>F</b>   </td><td class="markdownTableBodyCenter"><b>H</b>   </td><td class="markdownTableBodyCenter"><b>J</b>   </td><td class="markdownTableBodyCenter"><b>K</b>   </td><td class="markdownTableBodyCenter"><b>L</b>   </td><td class="markdownTableBodyCenter"><b>M</b>   </td><td class="markdownTableBodyCenter"><b>N</b>   </td></tr>
+</table>
+<p>_(1)_ Pins of the upper row differ significantly between systems. Some of them can be used as additional input or output lines.</p>
+<p>_(2)_ Pins <b>B</b> and <b>M</b> of the lower row are available on all systems, but with different constraints.</p>
+<p>I/O pins from <b>C</b> to <b>L</b> are connected to one port of a VIA or CIA chip on all systems and can be independently programmed as input or output. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
