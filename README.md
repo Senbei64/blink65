@@ -1,6 +1,8 @@
 # blink65
 Write Arduino-style sketches for VIC-20 and Commodore 64.
 
+![blink board](img/blink_board.jpg)
+
 ### Arduino-style API
 
 This example summarizes the Arduino-style API implemented so far:
@@ -23,14 +25,14 @@ void loop(void)
 
 |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| GND |*(1)*|*(1)*|*(1)*|*(1)*|*(1)*|*(1)*|*(1)*|*(1)*|*(1)*|*(1)*| GND |
-| GND |*(2)*|I/O 0|I/O 1|I/O 2|I/O 3|I/O 4|I/O 5|I/O 6|I/O 7|*(2)*| GND |
+| GND |_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_| GND |
+| GND |_(2)_|I/O 0|I/O 1|I/O 2|I/O 3|I/O 4|I/O 5|I/O 6|I/O 7|_(2)_| GND |
 |**A**|**B**|**C**|**D**|**E**|**F**|**H**|**J**|**K**|**L**|**M**|**N**|
 
-*(1)* Pins of the upper row differ significantly between systems.
+_(1)_ Pins of the upper row differ significantly between systems.
 Some of them can be used as additional input or output lines.
 
-*(2)* Pins **B** and **M** of the lower row are available on all systems,
+_(2)_ Pins **B** and **M** of the lower row are available on all systems,
 but with different constraints.
 
 I/O pins from **C** to **L** are connected to one port of a VIA or CIA chip on all systems
