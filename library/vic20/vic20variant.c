@@ -4,12 +4,50 @@
 #include <vic20.h>
 #include "blink65.h"
 
+/*- GLOBAL VARIABLES -------------------------------------------------------*/
+
+/* Pin to port LUT */
+uint8_t variant_port[NUM_DIGITAL_PINS] =
+{
+    0, 0, 0, 0, 0, 0, 0, 0, /* PB0..7 */
+    1,                      /* CB2 */
+    2, 2, 2, 2, 2, 2        /* PA2..7 */
+};
+
+uint8_t * variant_pr[NUM_DIGITAL_PORTS] =
+{
+    &VIA1.prb,
+    &VIA1.pcr, /* PCR has output level of CB2  */
+    &VIA1.pra
+};
+
+uint8_t variant_pr_mask[NUM_DIGITAL_PINS] =
+{
+    0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80,
+    0x20,
+    0x04, 0x08, 0x10, 0x20, 0x40, 0x80
+};
+
+uint8_t * variant_ddr[NUM_DIGITAL_PORTS] =
+{
+    &VIA1.ddrb,
+    &VIA1.pcr, /* PCR has direction of CB2 */
+    &VIA1.ddra
+};
+
+uint8_t variant_ddr_mask[NUM_DIGITAL_PINS] =
+{
+    0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80,
+    0x80,
+    0x04, 0x08, 0x10, 0x20, 0x40, 0x80
+};
+
+
 /*- GLOBAL FUNCTIONS -------------------------------------------------------*/
 
 void initVariant(void)
 {
-    _pr = &VIA1.prb;
-    _ddr = &VIA1.ddrb;
+    /* ... */
 }
 
 void updateBuiltinLed(uint8_t mode, uint8_t state)

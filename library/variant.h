@@ -5,19 +5,29 @@
 
 #include <stdint.h>
 
+
 /*- CONSTANTS --------------------------------------------------------------*/
 
 #define COLOR_INPUT COLOR_YELLOW
 #define COLOR_LOW   COLOR_BLACK
 #define COLOR_HIGH  COLOR_RED
 
+
 /*- VARIABLES --------------------------------------------------------------*/
 
-/* Port Register */
-extern uint8_t * _pr;
+/* Pin to port LUT */
+extern uint8_t variant_port[];
 
-/* Data Direction Register */
-extern uint8_t * _ddr;
+/* Port to Port Register LUT */
+extern uint8_t * variant_pr[];
+
+extern uint8_t variant_pr_mask[];
+
+/* Port to Data Direction Register LUT */
+extern uint8_t * variant_ddr[];
+
+extern uint8_t variant_ddr_mask[];
+
 
 /*- FUNCTIONS --------------------------------------------------------------*/
 

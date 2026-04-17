@@ -16,10 +16,24 @@
 #define DBG(format, ...) printf("[D] " format "\n", __VA_ARGS__)
 #endif
 
+#define PORT(pin) variant_port[pin]
+#define PR(pin) *variant_pr[PORT(pin)]
+#define DDR(pin) *variant_ddr[PORT(pin)]
+
+/*- LOCAL FUNCTIONS --------------------------------------------------------*/
+
+static void init(void)
+{
+    /* ... */
+}
+
+
 /*- GLOBAL FUNCTIONS -------------------------------------------------------*/
 
 void main(void)
 {
+    init();
+
     /* Variant specific initializations */
     initVariant();
 
@@ -42,31 +56,29 @@ void delay(uint32_t milliseconds)
 
 uint8_t digitalRead(uint8_t pin)
 {
-    DBG("DR pin %d", pin);
+    DBG("DR pin %u", pin);
 
-    if (pin < PIN_C || pin > PIN_L)
+    if (pin >= NUM_DIGITAL_PINS)
         return LOW;
 
-    return *_pr & (0x01 << (pin - PIN_C)) ? HIGH : LOW;
+    return PR(pin) & variant_pr_mask[pin] ? HIGH : LOW;
 }
 
 void digitalWrite(uint8_t pin, uint8_t state)
 {
-    uint8_t bit;
     uint8_t mode; 
 
-    DBG("DW pin:%d state:%d", pin, state);
+    DBG("DW pin:%u state:%u", pin, state);
 
-    if (pin < PIN_C || pin > PIN_L)
+    if (pin >= NUM_DIGITAL_PINS)
         return;
 
-    bit = 0x01 << (pin - PIN_C);
-    mode = *_ddr & bit ? OUTPUT : INPUT;
+    mode = DDR(pin) & variant_ddr_mask[pin] ? OUTPUT : INPUT;
 
     if (state == LOW)
-        *_pr &= ~bit;
+        PR(pin) &= ~variant_pr_mask[pin];
     else
-        *_pr |= bit;
+        PR(pin) |= variant_pr_mask[pin];
 
     if (pin == LED_BUILTIN)
         updateBuiltinLed(mode, state);
@@ -74,19 +86,15 @@ void digitalWrite(uint8_t pin, uint8_t state)
 
 void pinMode(uint8_t pin, uint8_t mode)
 {
-    uint8_t bit;
+    DBG("PM pin:%u mode:%u", pin, mode);
 
-    DBG("PM pin:%d mode:%d", pin, mode);
-
-    if (pin < PIN_C || pin > PIN_L)
+    if (pin >= NUM_DIGITAL_PINS)
         return;
 
-    bit = 0x01 << (pin - PIN_C);
-
     if (mode == INPUT)
-        *_ddr &= ~bit;
+        DDR(pin) &= ~variant_ddr_mask[pin];
     else if (mode == OUTPUT)
-        *_ddr |= bit;
+        DDR(pin) |= variant_ddr_mask[pin];
 
     if (pin == LED_BUILTIN)
     {

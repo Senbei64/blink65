@@ -13,6 +13,7 @@
 #include <vic20/pins.h>
 #endif
 
+
 /*- CONSTANTS --------------------------------------------------------------*/
 
 #define INPUT  0
@@ -20,6 +21,7 @@
 
 #define LOW  0
 #define HIGH 1
+
 
 /*- EXPORTED LIBRARY FUNCTIONS ---------------------------------------------*/
 
@@ -52,6 +54,7 @@ void pinMode(
     uint8_t pin, /**< pin number */
     uint8_t mode /**< new mode, either INPUT or OUTPUT */
 );
+
 
 /*- IMPORTED USER FUNCTIONS ------------------------------------------------*/
 

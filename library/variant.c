@@ -4,10 +4,13 @@
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
+/* Pin to port LUT */
+//uint8_t * variant_port;
+
 /* Port Register */
-uint8_t * _pr;
+//uint8_t * variant_pr;
 
 /* Data Direction Register */
-uint8_t * _ddr;
+//uint8_t * variant_ddr;
 
 /*--------------------------------------------------------------------------*/
