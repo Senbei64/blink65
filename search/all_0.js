@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_5fddr_0',['_ddr',['../variant_8h.html#a53ca27505a450a16bde5f483b7ddb323',1,'variant.h']]],
-  ['_5fpr_1',['_pr',['../variant_8h.html#a48f6c97201b751e2edb5ae077a4465a5',1,'variant.h']]]
+  ['acknowledgements_0',['Acknowledgements',['../index.html#autotoc_md3',1,'']]],
+  ['api_1',['Arduino-style API',['../index.html#autotoc_md1',1,'']]],
+  ['arduino_20style_20api_2',['Arduino-style API',['../index.html#autotoc_md1',1,'']]]
 ];
