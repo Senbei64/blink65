@@ -7,9 +7,9 @@ blinkbasic64.prg: blinkbasic64.bas
 #- CLEAN ---------------------------------------------------------------------
 clean:
 ifeq ($(OS),Windows_NT)
-	-del /q /f blinkbasic64.prg
+	-del /q /f blinkbasic64.prg 2>nul
 else
-	-rm -f blinkbasic64.prg
+	-rm -f blinkbasic64.prg 2>/dev/null
 endif
 
 #-----------------------------------------------------------------------------

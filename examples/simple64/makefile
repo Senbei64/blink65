@@ -10,9 +10,9 @@ simple64.prg: simple64.c
 #- CLEAN ---------------------------------------------------------------------
 clean:
 ifeq ($(OS),Windows_NT)
-	-del /q /f simple64.prg
+	-del /q /f simple64.prg 2>nul
 else
-	-rm -f simple64.o simple64.prg
+	-rm -f simple64.o simple64.prg >/dev/null
 endif
 
 #-----------------------------------------------------------------------------

@@ -8,6 +8,7 @@
 #include <stdio.h>
 #endif
 
+
 /*- LOCAL MACROS -----------------------------------------------------------*/
 
 #ifndef DEBUG
@@ -19,6 +20,7 @@
 #define PORT(pin) variant_port[pin]
 #define PR(pin) *variant_pr[PORT(pin)]
 #define DDR(pin) *variant_ddr[PORT(pin)]
+
 
 /*- LOCAL FUNCTIONS --------------------------------------------------------*/
 

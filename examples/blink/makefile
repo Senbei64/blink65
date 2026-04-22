@@ -11,10 +11,12 @@ ifeq ($(OS),Windows_NT)
   # Windows CMD
   MKDIR = mkdir
   RMDIR = rmdir /s /q
+  ERRNUL = 2>nul
 else
   # Linux / macOS shell
   MKDIR = mkdir -p
   RMDIR = rm -rf
+  ERRNUL = 2>/dev/null
 endif
 
 # - BUILD --------------------------------------------------------------------
@@ -64,10 +66,10 @@ $(foreach t,$(TARGETS),\
 )
 
 setup:
-	-@$(MKDIR) build obj
+	-@$(MKDIR) build obj $(ERRNUL)
 
 # - CLEAN --------------------------------------------------------------------
 clean:
-	-$(RMDIR) build obj
+	-$(RMDIR) build obj $(ERRNUL)
 
 #-----------------------------------------------------------------------------

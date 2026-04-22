@@ -13,12 +13,14 @@ ifeq ($(OS),Windows_NT)
   RMDIR = rmdir /s /q
   COPY = copy /y
   SEPARATOR = \\
+  ERRNUL = 2>nul
 else
   # Linux / macOS shell
   MKDIR = mkdir -p
   RMDIR = rm -rf
   COPY = cp -f
   SEPARATOR = /
+  ERRNUL = 2>/dev/null
 endif
 
 # - BUILD --------------------------------------------------------------------
@@ -55,7 +57,9 @@ $$(OBJ_DIR_$(1)_$(2))/blink65.o: blink65.c blink65.h variant.h | setup
 	cl65 -t $(1) $$(CFLAGS) -I. -c -o $$@ $$<
 
 # compile target specific variant
-$$(OBJ_DIR_$(1)_$(2))/$(1)variant.o: $(1)/$(1)variant.c | setup
+$$(OBJ_DIR_$(1)_$(2))/$(1)variant.s: $(1)/$(1)variant.c | setup
+	cc65 -t $(1) $$(CFLAGS) -I. -o $$@ $$<
+$$(OBJ_DIR_$(1)_$(2))/$(1)variant.o: $$(OBJ_DIR_$(1)_$(2))/$(1)variant.s | setup
 	cl65 -t $(1) $$(CFLAGS) -I. -c -o $$@ $$<
 
 # compose library
@@ -76,7 +80,7 @@ setup:
 	  $(foreach t,$(TARGETS),\
 	  build/$(t) $(foreach c,$(CONFIGS),\
 	  obj/$(t)/$(c)))\
-	)
+	) $(ERRNUL)
 
 # copy public headers
 build/%.h: %.h | setup
@@ -84,6 +88,6 @@ build/%.h: %.h | setup
 
 # - CLEAN --------------------------------------------------------------------
 clean:
-	-$(RMDIR) build obj
+	-$(RMDIR) build obj $(ERRNUL)
 
 #-----------------------------------------------------------------------------
