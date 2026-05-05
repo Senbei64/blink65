@@ -80,13 +80,19 @@ Arduino-style API</h2>
 <p>This example summarizes the Arduino-style API implemented so far: </p><div class="fragment"><div class="line">void setup(void)</div>
 <div class="line">{</div>
 <div class="line">    pinMode(LED_BUILTIN, OUTPUT);</div>
+<div class="line">    pinMode(PIN_L, OUTPUT);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line">void loop(void)</div>
 <div class="line">{</div>
 <div class="line">    digitalWrite(LED_BUILTIN, HIGH);</div>
+<div class="line">    tone(PIN_L, 440);</div>
+<div class="line">    analogWrite(PIN_M, 85);</div>
 <div class="line">    delay(1000);</div>
+<div class="line"> </div>
 <div class="line">    digitalWrite(LED_BUILTIN, LOW);</div>
+<div class="line">    noTone(PIN_L);</div>
+<div class="line">    analogWrite(PIN_M, 170);</div>
 <div class="line">    delay(1000);</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
