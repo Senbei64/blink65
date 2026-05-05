@@ -13,8 +13,8 @@
 #define PIN_F 3 /* PB3 */
 #define PIN_H 4 /* PB4 */
 #define PIN_J 5 /* PB5 */
-#define PIN_K 6 /* PB6 */
-#define PIN_L 7 /* PB7 */
+#define PIN_K 6 /* PB6, tone */
+#define PIN_L 7 /* PB7, tone */
 #define PIN_M 8 /* PA2 */
 
 #define LED_BUILTIN PIN_C

@@ -20,6 +20,11 @@ static void init(void)
 }
 
 
+/*- GLOBAL VARIABLES -------------------------------------------------------*/
+
+uint32_t variant_clock_hz;
+
+
 /*- GLOBAL FUNCTIONS -------------------------------------------------------*/
 
 void main(void)
@@ -94,6 +99,16 @@ void pinMode(uint8_t pin, uint8_t mode)
 
         updateBuiltinLed(mode, state);
     }
+}
+
+void tone(uint8_t pin, uint16_t frequency)
+{
+    DBG("TF pin:%u hz:%u\n", pin, frequency);
+
+    if (frequency < 10)
+        frequency = 10;
+
+    tonePeriod(pin, (variant_clock_hz + frequency) / (frequency * 2));
 }
 
 /*--------------------------------------------------------------------------*/

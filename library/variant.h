@@ -15,6 +15,9 @@
 
 /*- VARIABLES --------------------------------------------------------------*/
 
+/* System clock speed in hertz */
+extern uint32_t variant_clock_hz;
+
 /* Pin to port LUT */
 extern uint8_t variant_port[];
 
@@ -35,6 +38,14 @@ extern uint8_t variant_ddr_mask[];
  * Variant specific initialization.
  */
 void initVariant(void);
+
+/**
+ * Output a square wave with the given period.
+ */
+void tonePeriod(
+    uint8_t  pin,   /**< pin number */
+    uint16_t period /**< period in clock cycles */
+);
 
 /**
  * Update GUI to replicate the satuts of the fake builtin LED.

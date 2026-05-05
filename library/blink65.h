@@ -61,11 +61,26 @@ void digitalWrite(
 );
 
 /**
+ * Stop tone output.
+ */
+void noTone(
+    uint8_t pin /**< pin number */
+);
+
+/**
  * Set mode of a pin.
  */
 void pinMode(
     uint8_t pin, /**< pin number */
     uint8_t mode /**< new mode, either INPUT or OUTPUT */
+);
+
+/**
+ * Output a square wave with the given frequency in the range 10Hz..65kHz.
+ */
+void tone(
+    uint8_t  pin,      /**< pin number */
+    uint16_t frequency /**< frequency im hertz */
 );
 
 

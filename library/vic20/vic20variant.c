@@ -4,6 +4,18 @@
 #include <vic20.h>
 #include "blink65.h"
 
+
+/*- CONSTATNTS -------------------------------------------------------------*/
+
+#define CLOCK_PAL  1108404
+#define CLOCK_NTSC 1022727
+
+#define ACR_T1_OUT_ENABLE 0x80 /* Output pulses or square-wave on PB7 */
+#define ACR_T1_FREE_RUN   0x40 /* One-shot when not free-run */
+#define ACR_SR_MASK       0x1C
+#define ACR_SR_FREE_RUN   0x10 /* Shift out free run T2 rate */
+
+
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
 /* Pin to port LUT */
@@ -47,7 +59,82 @@ uint8_t variant_ddr_mask[NUM_DIGITAL_PINS] =
 
 void initVariant(void)
 {
-    /* ... */
+    if (*(int8_t *)0xE475 < 0)
+    {
+        /* PAL */
+        DBG("IV PAL\n");
+        variant_clock_hz = CLOCK_PAL;
+    }
+    else
+    {
+        /* NTSC */
+        DBG("IV NTSC\n");
+        variant_clock_hz = CLOCK_NTSC;
+    }
+}
+
+void noTone(uint8_t pin)
+{
+    DBG("NT pin:%u\n", pin);
+
+    if (pin == PIN_L)
+    {
+        /* Disable timer 1 output on PB7, switch to one-shot mode */
+        VIA1.acr &= ~(ACR_T1_OUT_ENABLE | ACR_T1_FREE_RUN);    
+
+        /* Set timer period to 0 to stop last run */
+        *(uint16_t *)&VIA1.t1_lo = 0;
+    }
+    else if (pin == PIN_M)
+    {
+        /* Disable shift register */
+        VIA1.acr &= ~ACR_SR_MASK;
+    }
+}
+
+void tonePeriod(uint8_t pin, uint16_t period)
+{
+    DBG("TP pin:%u T:%u\n", pin, period);
+
+    if (pin == PIN_L)
+    {
+        /* Timer 1 free-run and toggle PB7 */
+        VIA1.acr |= (ACR_T1_OUT_ENABLE | ACR_T1_FREE_RUN);
+
+        /* Set timer period and start */
+        *(uint16_t *)&VIA1.t1_lo = period - 2;
+    }
+    else if (pin == PIN_M)
+    {
+        /* Shift register free-run */
+        VIA1.acr = VIA1.acr & ~ACR_SR_MASK | ACR_SR_FREE_RUN;
+
+        period /= 2;
+        if (period <= 257)
+        {
+            VIA1.sr = 0x55; /* 01010101 */
+        }
+        else
+        {
+            period /= 2;
+            if (period <= 257)
+            {
+                VIA1.sr = 0x33; /* 00110011 */
+            }
+            else
+            {
+                period /= 2;
+                if (period > 257)
+                    period = 257;
+             
+                VIA1.sr = 0x0F; /* 00001111 */
+            }
+        }
+
+        VIA1.t2_lo = (uint8_t)(period - 2);
+
+        DBG("TP SR:$%02X T2:%u\n", VIA1.sr, period);
+    }
 }
 
 void updateBuiltinLed(uint8_t mode, uint8_t state)

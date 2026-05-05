@@ -14,8 +14,8 @@
 #define PIN_H 4 /* PA4 */
 #define PIN_J 5 /* PA5 */
 #define PIN_K 6 /* PA6 */
-#define PIN_L 7 /* PA7 */
-#define PIN_M 8 /* CB2 */
+#define PIN_L 7 /* PA7, tone */
+#define PIN_M 8 /* CB2, tone */
 
 #define LED_BUILTIN PIN_C
 

@@ -14,8 +14,8 @@
 #define PIN_H  4 /* VIA1 PB4 */
 #define PIN_J  5 /* VIA1 PB5 */
 #define PIN_K  6 /* VIA1 PB6 */
-#define PIN_L  7 /* VIA1 PB7 */
-#define PIN_M  8 /* VIA1 CB2 */
+#define PIN_L  7 /* VIA1 PB7, tone */
+#define PIN_M  8 /* VIA1 CB2, tone */
 #define PIN_4  9 /* VIA1 PA2 */
 #define PIN_5 10 /* VIA1 PA3 */
 #define PIN_6 11 /* VIA1 PA4 */
