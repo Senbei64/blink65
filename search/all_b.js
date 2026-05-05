@@ -1,5 +1,23 @@
 var searchData=
 [
-  ['setup_0',['setup',['../blink65_8h.html#a7dfd9b79bc5a37d7df40207afbc5431f',1,'blink65.h']]],
-  ['style_20api_1',['Arduino-style API',['../index.html#autotoc_md1',1,'']]]
+  ['pet_20user_20port_0',['Commodore PET User Port',['..//home/runner/work/blink65/blink65/library/pet/README.md#autotoc_md8',1,'']]],
+  ['pet_20variant_1',['Commodore PET Variant',['..//home/runner/work/blink65/blink65/library/pet/README.md#autotoc_md9',1,'']]],
+  ['pin_5f4_2',['PIN_4',['../vic20_2pins_8h.html#a8088a3b9bfae1f46b55824cb7ba21b7a',1,'pins.h']]],
+  ['pin_5f5_3',['PIN_5',['../vic20_2pins_8h.html#a1d222f0684a8413a38c257d9938af585',1,'pins.h']]],
+  ['pin_5f6_4',['PIN_6',['../vic20_2pins_8h.html#a347ca13449e59d7377624b64bc42d464',1,'pins.h']]],
+  ['pin_5f7_5',['PIN_7',['../vic20_2pins_8h.html#af56aad34f1635c1a7866a06b52f92d8f',1,'pins.h']]],
+  ['pin_5f8_6',['PIN_8',['../vic20_2pins_8h.html#a0f6f10937b433da4954b381d635f86c5',1,'pins.h']]],
+  ['pin_5f9_7',['PIN_9',['../vic20_2pins_8h.html#a590e3acf2838bb10adc23423b1a2d99f',1,'pins.h']]],
+  ['pin_5fc_8',['pin_c',['../c64_2pins_8h.html#ac31844038a274a4cfa6375484e3031f9',1,'PIN_C:&#160;pins.h'],['../vic20_2pins_8h.html#ac31844038a274a4cfa6375484e3031f9',1,'PIN_C:&#160;pins.h'],['../pet_2pins_8h.html#ac31844038a274a4cfa6375484e3031f9',1,'PIN_C:&#160;pins.h']]],
+  ['pin_5fd_9',['pin_d',['../c64_2pins_8h.html#ae7134993f048a6eb21f367be4d9f65bc',1,'PIN_D:&#160;pins.h'],['../pet_2pins_8h.html#ae7134993f048a6eb21f367be4d9f65bc',1,'PIN_D:&#160;pins.h'],['../vic20_2pins_8h.html#ae7134993f048a6eb21f367be4d9f65bc',1,'PIN_D:&#160;pins.h']]],
+  ['pin_5fe_10',['pin_e',['../c64_2pins_8h.html#af2266b30f789dce3014ba7290ba0c693',1,'PIN_E:&#160;pins.h'],['../pet_2pins_8h.html#af2266b30f789dce3014ba7290ba0c693',1,'PIN_E:&#160;pins.h'],['../vic20_2pins_8h.html#af2266b30f789dce3014ba7290ba0c693',1,'PIN_E:&#160;pins.h']]],
+  ['pin_5ff_11',['pin_f',['../c64_2pins_8h.html#a7ace8fd5053cb5bb9f578d8e6423209b',1,'PIN_F:&#160;pins.h'],['../vic20_2pins_8h.html#a7ace8fd5053cb5bb9f578d8e6423209b',1,'PIN_F:&#160;pins.h'],['../pet_2pins_8h.html#a7ace8fd5053cb5bb9f578d8e6423209b',1,'PIN_F:&#160;pins.h']]],
+  ['pin_5fh_12',['pin_h',['../c64_2pins_8h.html#ac1f40589cd168434394a494959112132',1,'PIN_H:&#160;pins.h'],['../pet_2pins_8h.html#ac1f40589cd168434394a494959112132',1,'PIN_H:&#160;pins.h'],['../vic20_2pins_8h.html#ac1f40589cd168434394a494959112132',1,'PIN_H:&#160;pins.h']]],
+  ['pin_5fj_13',['pin_j',['../c64_2pins_8h.html#ab5024552a405c88344bcc970f42230e0',1,'PIN_J:&#160;pins.h'],['../pet_2pins_8h.html#ab5024552a405c88344bcc970f42230e0',1,'PIN_J:&#160;pins.h'],['../vic20_2pins_8h.html#ab5024552a405c88344bcc970f42230e0',1,'PIN_J:&#160;pins.h']]],
+  ['pin_5fk_14',['pin_k',['../c64_2pins_8h.html#ad0a11f538d18737b32afe32631ea691e',1,'PIN_K:&#160;pins.h'],['../vic20_2pins_8h.html#ad0a11f538d18737b32afe32631ea691e',1,'PIN_K:&#160;pins.h'],['../pet_2pins_8h.html#ad0a11f538d18737b32afe32631ea691e',1,'PIN_K:&#160;pins.h']]],
+  ['pin_5fl_15',['pin_l',['../c64_2pins_8h.html#aff0e907c272b67b1efb721012d3f5b90',1,'PIN_L:&#160;pins.h'],['../pet_2pins_8h.html#aff0e907c272b67b1efb721012d3f5b90',1,'PIN_L:&#160;pins.h'],['../vic20_2pins_8h.html#aff0e907c272b67b1efb721012d3f5b90',1,'PIN_L:&#160;pins.h']]],
+  ['pin_5fm_16',['pin_m',['../c64_2pins_8h.html#a488451fba5db6042f21672f7444bfe53',1,'PIN_M:&#160;pins.h'],['../pet_2pins_8h.html#a488451fba5db6042f21672f7444bfe53',1,'PIN_M:&#160;pins.h'],['../vic20_2pins_8h.html#a488451fba5db6042f21672f7444bfe53',1,'PIN_M:&#160;pins.h']]],
+  ['pinmode_17',['pinMode',['../blink65_8h.html#abf453c1659ee9fafa5af689523ac71e7',1,'blink65.h']]],
+  ['pins_2eh_18',['pins.h',['../pet_2pins_8h.html',1,'(Global Namespace)'],['../vic20_2pins_8h.html',1,'(Global Namespace)'],['../c64_2pins_8h.html',1,'(Global Namespace)']]],
+  ['port_19',['port',['..//home/runner/work/blink65/blink65/library/c64/README.md#autotoc_md5',1,'Commodore 64 User Port'],['..//home/runner/work/blink65/blink65/library/pet/README.md#autotoc_md8',1,'Commodore PET User Port'],['../index.html#autotoc_md2',1,'Commodore User Port'],['..//home/runner/work/blink65/blink65/library/vic20/README.md#autotoc_md11',1,'Commodore VIC-20 User Port']]]
 ];

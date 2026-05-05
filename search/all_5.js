@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['initvariant_0',['initVariant',['../variant_8h.html#a2c97027bd05bc09accd09dcd4ada2642',1,'variant.h']]],
-  ['input_1',['INPUT',['../blink65_8h.html#a1bb283bd7893b9855e2f23013891fc82',1,'blink65.h']]]
+  ['dbg_0',['DBG',['../blink65_8h.html#ae8924623ca601364965e3d88fb7f40fa',1,'blink65.h']]],
+  ['delay_1',['delay',['../blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93',1,'blink65.h']]],
+  ['digitalread_2',['digitalRead',['../blink65_8h.html#af34f72641c4724c3fe3a1dc82011fe1a',1,'blink65.h']]],
+  ['digitalwrite_3',['digitalWrite',['../blink65_8h.html#af4481224d05e8f5769687a7d4806edb6',1,'blink65.h']]]
 ];
