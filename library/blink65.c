@@ -4,18 +4,8 @@
 #include <time.h>
 #include "variant.h"
 
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-
 
 /*- LOCAL MACROS -----------------------------------------------------------*/
-
-#ifndef DEBUG
-#define DBG(...) 
-#else
-#define DBG(format, ...) printf("[D] " format "\n", __VA_ARGS__)
-#endif
 
 #define PORT(pin) variant_port[pin]
 #define PR(pin) *variant_pr[PORT(pin)]
@@ -58,7 +48,7 @@ void delay(uint32_t milliseconds)
 
 uint8_t digitalRead(uint8_t pin)
 {
-    DBG("DR pin %u", pin);
+    DBG("DR pin %u\n", pin);
 
     if (pin >= NUM_DIGITAL_PINS)
         return LOW;
@@ -70,7 +60,7 @@ void digitalWrite(uint8_t pin, uint8_t state)
 {
     uint8_t mode; 
 
-    DBG("DW pin:%u state:%u", pin, state);
+    DBG("DW pin:%u state:%u\n", pin, state);
 
     if (pin >= NUM_DIGITAL_PINS)
         return;
@@ -88,7 +78,7 @@ void digitalWrite(uint8_t pin, uint8_t state)
 
 void pinMode(uint8_t pin, uint8_t mode)
 {
-    DBG("PM pin:%u mode:%u", pin, mode);
+    DBG("PM pin:%u mode:%u\n", pin, mode);
 
     if (pin >= NUM_DIGITAL_PINS)
         return;

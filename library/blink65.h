@@ -13,6 +13,10 @@
 #include <vic20/pins.h>
 #endif
 
+#ifdef DEBUG
+#include <stdio.h>
+#endif
+
 
 /*- CONSTANTS --------------------------------------------------------------*/
 
@@ -21,6 +25,15 @@
 
 #define LOW  0
 #define HIGH 1
+
+
+/*- MACROS -----------------------------------------------------------------*/
+
+#ifndef DEBUG
+#define DBG(...) 
+#else
+#define DBG(...) printf("[D] " __VA_ARGS__)
+#endif
 
 
 /*- EXPORTED LIBRARY FUNCTIONS ---------------------------------------------*/

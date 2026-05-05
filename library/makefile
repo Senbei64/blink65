@@ -50,7 +50,7 @@ OBJ_DIR_$(1)_$(2) := obj/$(1)/$(2)
 LIB_NAME_$(1)_$(2) := build/$(1)/blink65$(if $(filter debug,$(2)),d).lib
 
 # flags for this combination
-$$(OBJ_DIR_$(1)_$(2))/%.o: CFLAGS := $(if $(filter debug,$(2)),-DDEBUG=1)
+$$(OBJ_DIR_$(1)_$(2))/%.o: CFLAGS := $(if $(filter debug,$(2)),-DDEBUG=1) -Osir
 
 # compile main library sources
 $$(OBJ_DIR_$(1)_$(2))/blink65.o: blink65.c blink65.h variant.h | setup
