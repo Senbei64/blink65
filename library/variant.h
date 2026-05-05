@@ -8,27 +8,29 @@
 
 /*- CONSTANTS --------------------------------------------------------------*/
 
-#define COLOR_INPUT COLOR_YELLOW
-#define COLOR_LOW   COLOR_BLACK
-#define COLOR_HIGH  COLOR_RED
+#define COLOR_INPUT COLOR_YELLOW /**< Simulated default LED in input mode */
+#define COLOR_LOW   COLOR_BLACK  /**< Simulated default LED in low output */
+#define COLOR_HIGH  COLOR_RED    /**< Simulated default LED in high output */
 
 
 /*- VARIABLES --------------------------------------------------------------*/
 
-/* System clock speed in hertz */
+/** System clock speed in hertz */
 extern uint32_t variant_clock_hz;
 
-/* Pin to port LUT */
+/** Pin to port LUT */
 extern uint8_t variant_port[];
 
-/* Port to Port Register LUT */
+/** Port to Port Register LUT */
 extern uint8_t * variant_pr[];
 
+/** Pin bits in Port Register */
 extern uint8_t variant_pr_mask[];
 
-/* Port to Data Direction Register LUT */
+/** Port to Data Direction Register LUT */
 extern uint8_t * variant_ddr[];
 
+/** Pin bits in Data Direction Register */
 extern uint8_t variant_ddr_mask[];
 
 

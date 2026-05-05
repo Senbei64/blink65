@@ -20,15 +20,18 @@
 
 /*- CONSTANTS --------------------------------------------------------------*/
 
-#define INPUT  0
-#define OUTPUT 1
+#define INPUT  0 /**< Pin mode input, high Z */
+#define OUTPUT 1 /**< Pin mode output */
 
-#define LOW  0
-#define HIGH 1
+#define LOW  0 /**< Output state low */
+#define HIGH 1 /**< Output state high */
 
 
 /*- MACROS -----------------------------------------------------------------*/
 
+/** 
+ * Prints a formatted message to the console in DEBUG mode.
+ */
 #ifndef DEBUG
 #define DBG(...) 
 #else
