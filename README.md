@@ -10,13 +10,16 @@ This example summarizes the Arduino-style API implemented so far:
 void setup(void)
 {
     pinMode(LED_BUILTIN, OUTPUT);
+    pinMode(PIN_L, OUTPUT);
 }
 
 void loop(void)
 {
     digitalWrite(LED_BUILTIN, HIGH);
+    tone(PIN_L, 440);
     delay(1000);
     digitalWrite(LED_BUILTIN, LOW);
+    noTone(PIN_L);
     delay(1000);
 }
 ```
