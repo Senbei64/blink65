@@ -1,5 +1,5 @@
 # blink65
-Write Arduino-style sketches for VIC-20 and Commodore 64.
+Write Arduino-style sketches with cc65 for VIC-20, PET, and Commodore 64.
 
 ![blink board](img/blink_board.jpg)
 
@@ -23,11 +23,11 @@ void loop(void)
 
 ### Commodore User Port
 
-|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| GND |_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_|_(1)_| GND |
-| GND |_(2)_|I/O 0|I/O 1|I/O 2|I/O 3|I/O 4|I/O 5|I/O 6|I/O 7|_(2)_| GND |
-|**A**|**B**|**C**|**D**|**E**|**F**|**H**|**J**|**K**|**L**|**M**|**N**|
+|  PIN_1  |  PIN_2  |  PIN_3  |  PIN_4  |  PIN_5  |  PIN_6  |  PIN_7  |  PIN_8  |  PIN_9  |  PIN_10 |  PIN_11 |  PIN_12 |
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|   GND   |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |  _(1)_  |   GND   |
+|   GND   |  _(2)_  |  I/O 0  |  I/O 1  |  I/O 2  |  I/O 3  |  I/O 4  |  I/O 5  |  I/O 6  |  I/O 7  |  _(2)_  |   GND   |
+|**PIN_A**|**PIN_B**|**PIN_C**|**PIN_D**|**PIN_E**|**PIN_F**|**PIN_H**|**PIN_J**|**PIN_K**|**PIN_L**|**PIN_M**|**PIN_N**|
 
 _(1)_ Pins of the upper row differ significantly between systems.
 Some of them can be used as additional input or output lines.

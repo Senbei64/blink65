@@ -1,5 +1,5 @@
 # blink65
-Write Arduino-style sketches for VIC-20 and Commodore 64.
+Write Arduino-style sketches with cc65 for VIC-20, PET, and Commodore 64.
 
 ## Blink - BASIC
 This exapmple is written without the **blink65** library.
