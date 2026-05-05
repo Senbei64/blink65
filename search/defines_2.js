@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_0',['INPUT',['../blink65_8h.html#a1bb283bd7893b9855e2f23013891fc82',1,'blink65.h']]]
+  ['high_0',['HIGH',['../blink65_8h.html#a5bb885982ff66a2e0a0a45a8ee9c35e2',1,'blink65.h']]]
 ];
