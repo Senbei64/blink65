@@ -42,7 +42,7 @@ extern uint8_t variant_ddr_mask[];
 void initVariant(void);
 
 /**
- * Output a square wave with the given period.
+ * Outputs a square wave with the given period.
  */
 void tonePeriod(
     uint8_t  pin,   /**< pin number */
@@ -50,7 +50,7 @@ void tonePeriod(
 );
 
 /**
- * Update GUI to replicate the satuts of the fake builtin LED.
+ * Updates GUI to replicate the satuts of the fake builtin LED.
  */
 void updateBuiltinLed(
 	uint8_t mode, /**< builtin LED mode, INPUT or PUTPUT */

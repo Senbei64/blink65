@@ -73,6 +73,21 @@ void initVariant(void)
     }
 }
 
+void analogWrite(uint8_t pin, uint8_t level)
+{
+    uint8_t pattern = 0xFF >> (8 - level * 9 / 255);
+
+    DBG("AW p:%u l:%3u s:$%02X\n", pin, level, pattern);
+
+    if (pin != PIN_M)
+        return;
+
+    /* Shift register free-run */
+    VIA1.acr = VIA1.acr & ~ACR_SR_MASK | ACR_SR_FREE_RUN;
+    VIA1.t2_lo = 255; /* PWM frequency around 500 Hz */
+    VIA1.sr = pattern;
+}
+
 void noTone(uint8_t pin)
 {
     DBG("NT pin:%u\n", pin);
@@ -106,20 +121,22 @@ void tonePeriod(uint8_t pin, uint16_t period)
     }
     else if (pin == PIN_M)
     {
+        uint8_t pattern;
+
         /* Shift register free-run */
         VIA1.acr = VIA1.acr & ~ACR_SR_MASK | ACR_SR_FREE_RUN;
 
         period /= 2;
         if (period <= 257)
         {
-            VIA1.sr = 0x55; /* 01010101 */
+            pattern = 0x55; /* 01010101 */
         }
         else
         {
             period /= 2;
             if (period <= 257)
             {
-                VIA1.sr = 0x33; /* 00110011 */
+                pattern = 0x33; /* 00110011 */
             }
             else
             {
@@ -127,13 +144,14 @@ void tonePeriod(uint8_t pin, uint16_t period)
                 if (period > 257)
                     period = 257;
              
-                VIA1.sr = 0x0F; /* 00001111 */
+                pattern = 0x0F; /* 00001111 */
             }
         }
 
         VIA1.t2_lo = (uint8_t)(period - 2);
+        VIA1.sr = pattern;
 
-        DBG("TP SR:$%02X T2:%u\n", VIA1.sr, period);
+        DBG("TP sr:$%02X T2:%u\n", pattern, period);
     }
 }
 

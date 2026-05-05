@@ -17,9 +17,12 @@ void loop(void)
 {
     digitalWrite(LED_BUILTIN, HIGH);
     tone(PIN_L, 440);
+    analogWrite(PIN_M, 85);
     delay(1000);
+
     digitalWrite(LED_BUILTIN, LOW);
     noTone(PIN_L);
+    analogWrite(PIN_M, 170);
     delay(1000);
 }
 ```

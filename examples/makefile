@@ -1,6 +1,6 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-SUBDIRS = blink tones simple64
+SUBDIRS = blink tones ramp simple64
 
 .PHONY: all clean $(SUBDIRS)
 

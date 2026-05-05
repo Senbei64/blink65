@@ -30,7 +30,7 @@
 /*- MACROS -----------------------------------------------------------------*/
 
 /** 
- * Prints a formatted message to the console in DEBUG mode.
+ * Print a formatted message to the console in DEBUG mode.
  */
 #ifndef DEBUG
 #define DBG(...) 
@@ -49,14 +49,24 @@ void delay(
 );
 
 /**
- * Read state of an input pin.
+ * Sets the output level for an analog pin using Pulse Width Modulation (PWM).
+ * PWM frequency and resolution may vary depending on the hardware variant and the
+ * specific pin used.
+ */
+void analogWrite(
+    uint8_t pin,  /**< pin number */
+    uint8_t level /**< output level between 0 and 255 (Vcc) */
+);
+
+/**
+ * Reads state of an input pin.
  */
 uint8_t digitalRead(
     uint8_t pin /**< pin number */
 );
 
 /**
- * Set state of an output pin.
+ * Sets state of an output pin.
  */
 void digitalWrite(
     uint8_t pin,  /**< pin number */
@@ -64,14 +74,14 @@ void digitalWrite(
 );
 
 /**
- * Stop tone output.
+ * Stops tone output.
  */
 void noTone(
     uint8_t pin /**< pin number */
 );
 
 /**
- * Set mode of a pin.
+ * Sets mode of a pin.
  */
 void pinMode(
     uint8_t pin, /**< pin number */
@@ -79,7 +89,7 @@ void pinMode(
 );
 
 /**
- * Output a square wave with the given frequency in the range 10Hz..65kHz.
+ * Outputs a square wave with the given frequency in the range 10Hz..65kHz.
  */
 void tone(
     uint8_t  pin,      /**< pin number */
