@@ -3,13 +3,13 @@
 #include <blink65.h>
 
 #if defined(__C64__)
-#define FISRT_PIN  PIN_K
+#define FIRST_PIN  PIN_K
 #define SECOND_PIN PIN_L
 #elif defined(__PET__)
-#define FISRT_PIN  PIN_L
+#define FIRST_PIN  PIN_L
 #define SECOND_PIN PIN_M
 #elif defined(__VIC20__)
-#define FISRT_PIN  PIN_M
+#define FIRST_PIN  PIN_M
 #define SECOND_PIN PIN_M
 #endif
 
