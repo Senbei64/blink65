@@ -10,6 +10,7 @@ Write Arduino-style sketches with cc65 for VIC-20, PET, and Commodore 64.
 |**PIN_A**|**PIN_B**|**PIN_C**|**PIN_D**|**PIN_E**|**PIN_F**|**PIN_H**|**PIN_J**|**PIN_K**|**PIN_L**|**PIN_M**|**PIN_N**|
 
 _(1)_ Pins used for the video signal.
+
 _(2)_ Pins available via direct programming of PIA and CIA chips.
 
 ### Commodore PET Variant

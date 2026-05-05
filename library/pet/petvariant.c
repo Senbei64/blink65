@@ -10,10 +10,8 @@
 
 #define CLOCK  1000000
 
-#define ACR_T1_OUT_ENABLE  0x80 /* Output pulses or square-wave on PB7 */
-#define ACR_T1_FREE_RUN    0x40 /* One-shot when not free-run */
-#define ACR_SR_MASK       0x1C
-#define ACR_SR_FREE_RUN   0x10 /* Shift out free run T2 rate */
+#define ACR_SR_MASK     0x1C
+#define ACR_SR_FREE_RUN 0x10 /* Shift out free run T2 rate */
 
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
@@ -61,64 +59,48 @@ void noTone(uint8_t pin)
 {
     DBG("NT pin:%u\n", pin);
 
-    if (pin == PIN_L)
-    {
-        /* Disable timer 1 output on PB7, switch to one-shot mode */
-        VIA.acr &= ~(ACR_T1_OUT_ENABLE | ACR_T1_FREE_RUN);    
+    if (pin != PIN_M)
+        return;
 
-        /* Set timer period to 0 to stop last run */
-        *(uint16_t *)&VIA.t1_lo = 0;
-    }
-    else if (pin == PIN_M)
-    {
-        /* Disable shift register */
-        VIA.acr &= ~ACR_SR_MASK;
-    }
+    /* Disable shift register */
+    VIA.acr &= ~ACR_SR_MASK;
 }
 
 void tonePeriod(uint8_t pin, uint16_t period)
 {
     DBG("TP pin:%u T:%u\n", pin, period);
 
-    if (pin == PIN_L)
-    {
-        /* Timer 1 free-run and toggle PB7 */
-        VIA.acr |= (ACR_T1_OUT_ENABLE | ACR_T1_FREE_RUN);
+    if (pin != PIN_M)
+        return;
 
-        /* Set timer period and start */
-        *(uint16_t *)&VIA.t1_lo = period;
+    /* Shift register free-run */
+    VIA.acr = VIA.acr & ~ACR_SR_MASK | ACR_SR_FREE_RUN;
+
+    period /= 2;
+    if (period <= 257)
+    {
+        VIA.sr = 0x55; /* 01010101 */
     }
-    else if (pin == PIN_M)
+    else
     {
-        /* Shift register free-run */
-        VIA.acr = VIA.acr & ~ACR_SR_MASK | ACR_SR_FREE_RUN;
-
         period /= 2;
         if (period <= 257)
         {
-            VIA.sr = 0x55; /* 01010101 */
+            VIA.sr = 0x33; /* 00110011 */
         }
         else
         {
             period /= 2;
-            if (period <= 257)
-            {
-                VIA.sr = 0x33; /* 00110011 */
-            }
-            else
-            {
-                period /= 2;
-                if (period > 257)
-                    period = 257;
-             
-                VIA.sr = 0x0F; /* 00001111 */
-            }
+            if (period > 257)
+                period = 257;
+            
+            VIA.sr = 0x0F; /* 00001111 */
         }
-
-        VIA.t2_lo = (uint8_t)(period - 2);
-
-        DBG("TP SR:$%02X T2:%u\n", VIA.sr, period - 2);
     }
+
+    VIA.t2_lo = (uint8_t)(period - 2);
+
+    DBG("TP SR:$%02X T2:%u\n", VIA.sr, period - 2);
 }
 
 void updateBuiltinLed(uint8_t mode, uint8_t state)
