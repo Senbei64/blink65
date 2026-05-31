@@ -62,13 +62,13 @@ void initVariant(void)
     if (*(int8_t *)0xE475 < 0)
     {
         /* PAL */
-        DBG("IV PAL\n");
+        DBG("iv pal\n");
         variant_clock_hz = CLOCK_PAL;
     }
     else
     {
         /* NTSC */
-        DBG("IV NTSC\n");
+        DBG("iv ntsc\n");
         variant_clock_hz = CLOCK_NTSC;
     }
 }
@@ -77,7 +77,7 @@ void analogWrite(uint8_t pin, uint8_t level)
 {
     uint8_t pattern = 0xFF >> (8 - level * 9 / 255);
 
-    DBG("AW p:%u l:%3u s:$%02X\n", pin, level, pattern);
+    DBG("aw p:%u l:%3u s:$%02x\n", pin, level, pattern);
 
     if (pin != PIN_M)
         return;
@@ -90,7 +90,7 @@ void analogWrite(uint8_t pin, uint8_t level)
 
 void noTone(uint8_t pin)
 {
-    DBG("NT pin:%u\n", pin);
+    DBG("nt pin:%u\n", pin);
 
     if (pin == PIN_L)
     {
@@ -109,7 +109,7 @@ void noTone(uint8_t pin)
 
 void tonePeriod(uint8_t pin, uint16_t period)
 {
-    DBG("TP pin:%u T:%u\n", pin, period);
+    DBG("tp pin:%u t:%u\n", pin, period);
 
     if (pin == PIN_L)
     {
@@ -151,7 +151,7 @@ void tonePeriod(uint8_t pin, uint16_t period)
         VIA1.t2_lo = (uint8_t)(period - 2);
         VIA1.sr = pattern;
 
-        DBG("TP sr:$%02X T2:%u\n", pattern, period);
+        DBG("tp sr:$%02X t2:%u\n", pattern, period);
     }
 }
 

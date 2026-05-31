@@ -53,7 +53,7 @@ void delay(uint32_t milliseconds)
 
 uint8_t digitalRead(uint8_t pin)
 {
-    DBG("DR pin %u\n", pin);
+    DBG("dr pin %u\n", pin);
 
     if (pin >= NUM_DIGITAL_PINS)
         return LOW;
@@ -65,7 +65,7 @@ void digitalWrite(uint8_t pin, uint8_t state)
 {
     uint8_t mode; 
 
-    DBG("DW pin:%u state:%u\n", pin, state);
+    DBG("dw pin:%u state:%u\n", pin, state);
 
     if (pin >= NUM_DIGITAL_PINS)
         return;
@@ -83,7 +83,7 @@ void digitalWrite(uint8_t pin, uint8_t state)
 
 void pinMode(uint8_t pin, uint8_t mode)
 {
-    DBG("PM pin:%u mode:%u\n", pin, mode);
+    DBG("pm pin:%u mode:%u\n", pin, mode);
 
     if (pin >= NUM_DIGITAL_PINS)
         return;
@@ -103,7 +103,7 @@ void pinMode(uint8_t pin, uint8_t mode)
 
 void tone(uint8_t pin, uint16_t frequency)
 {
-    DBG("TF pin:%u hz:%u\n", pin, frequency);
+    DBG("tf pin:%u hz:%u\n", pin, frequency);
 
     if (frequency < 10)
         frequency = 10;

@@ -59,13 +59,13 @@ void initVariant(void)
     if (*(uint8_t *)0x02A6 != 0)
     {
         /* PAL */
-        DBG("IV PAL\n");
+        DBG("iv pal\n");
         variant_clock_hz = CLOCK_PAL;
     }
     else
     {
         /* NTSC */
-        DBG("IV NTSC\n");
+        DBG("iv ntsc\n");
         variant_clock_hz = CLOCK_NTSC;
     }
 
@@ -76,7 +76,7 @@ void initVariant(void)
 
 void noTone(uint8_t pin)
 {
-    DBG("NT pin:%u\n", pin);
+    DBG("nt pin:%u\n", pin);
 
     if (pin != PIN_K && pin != PIN_L)
         return;
@@ -89,7 +89,7 @@ void noTone(uint8_t pin)
 
 void tonePeriod(uint8_t pin, uint16_t period)
 {
-    DBG("TP pin:%u T:%u\n", pin, period);
+    DBG("tp pin:%u t:%u\n", pin, period);
 
     if (pin != PIN_K && pin != PIN_L)
         return;

@@ -35,7 +35,7 @@
 #ifndef DEBUG
 #define DBG(...) 
 #else
-#define DBG(...) printf("[D] " __VA_ARGS__)
+#define DBG(...) printf("!" __VA_ARGS__)
 #endif
 
 
