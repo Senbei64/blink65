@@ -38,6 +38,16 @@
 #define DBG(...) printf("!" __VA_ARGS__)
 #endif
 
+/**
+ * Enables maskable interrupts.
+ */
+#define interrupts() __asm__("cli")
+
+/**
+ * Disables maskable interrupts.
+ */
+#define noInterrupts() __asm__("sei")
+
 
 /*- EXPORTED LIBRARY FUNCTIONS ---------------------------------------------*/
 
