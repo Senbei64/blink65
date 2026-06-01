@@ -102,6 +102,12 @@ Macros</h2></td></tr>
 <tr class="memitem:ae8924623ca601364965e3d88fb7f40fa" id="r_ae8924623ca601364965e3d88fb7f40fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blink65_8h.html#ae8924623ca601364965e3d88fb7f40fa">DBG</a>(...)</td></tr>
 <tr class="memdesc:ae8924623ca601364965e3d88fb7f40fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a formatted message to the console in DEBUG mode.  <br /></td></tr>
 <tr class="separator:ae8924623ca601364965e3d88fb7f40fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab54da5ac84f3441a91cb982b2276bc" id="r_aeab54da5ac84f3441a91cb982b2276bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blink65_8h.html#aeab54da5ac84f3441a91cb982b2276bc">interrupts</a>()&#160;&#160;&#160;__asm__(&quot;cli&quot;)</td></tr>
+<tr class="memdesc:aeab54da5ac84f3441a91cb982b2276bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables maskable interrupts.  <br /></td></tr>
+<tr class="separator:aeab54da5ac84f3441a91cb982b2276bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dfd0b70aa3eb3c592d6de11711fce91" id="r_a8dfd0b70aa3eb3c592d6de11711fce91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="blink65_8h.html#a8dfd0b70aa3eb3c592d6de11711fce91">noInterrupts</a>()&#160;&#160;&#160;__asm__(&quot;sei&quot;)</td></tr>
+<tr class="memdesc:a8dfd0b70aa3eb3c592d6de11711fce91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables maskable interrupts.  <br /></td></tr>
+<tr class="separator:a8dfd0b70aa3eb3c592d6de11711fce91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -186,6 +192,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aeab54da5ac84f3441a91cb982b2276bc" name="aeab54da5ac84f3441a91cb982b2276bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeab54da5ac84f3441a91cb982b2276bc">&#9670;&#160;</a></span>interrupts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define interrupts</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;__asm__(&quot;cli&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables maskable interrupts. </p>
+
+</div>
+</div>
 <a id="ab811d8c6ff3a505312d3276590444289" name="ab811d8c6ff3a505312d3276590444289"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab811d8c6ff3a505312d3276590444289">&#9670;&#160;</a></span>LOW</h2>
 
@@ -199,6 +224,25 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Output state low. </p>
+
+</div>
+</div>
+<a id="a8dfd0b70aa3eb3c592d6de11711fce91" name="a8dfd0b70aa3eb3c592d6de11711fce91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dfd0b70aa3eb3c592d6de11711fce91">&#9670;&#160;</a></span>noInterrupts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define noInterrupts</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;__asm__(&quot;sei&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables maskable interrupts. </p>
 
 </div>
 </div>

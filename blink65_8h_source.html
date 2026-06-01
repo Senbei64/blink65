@@ -112,50 +112,54 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define DBG(...) printf(&quot;!&quot; __VA_ARGS__)</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/*- EXPORTED LIBRARY FUNCTIONS ---------------------------------------------*/</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93">delay</a>(</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint32_t milliseconds </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="blink65_8h.html#aeab54da5ac84f3441a91cb982b2276bc">   44</a></span><span class="preprocessor">#define interrupts() __asm__(&quot;cli&quot;)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="blink65_8h.html#a8dfd0b70aa3eb3c592d6de11711fce91">   49</a></span><span class="preprocessor">#define noInterrupts() __asm__(&quot;sei&quot;)</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="blink65_8h.html#a63ff97b27f97c7dbe2335fcdbb731e01">   56</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a63ff97b27f97c7dbe2335fcdbb731e01">analogWrite</a>(</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    uint8_t pin,  </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    uint8_t level </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/*- EXPORTED LIBRARY FUNCTIONS ---------------------------------------------*/</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93">delay</a>(</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    uint32_t milliseconds </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="blink65_8h.html#af34f72641c4724c3fe3a1dc82011fe1a">   64</a></span>uint8_t <a class="code hl_function" href="blink65_8h.html#af34f72641c4724c3fe3a1dc82011fe1a">digitalRead</a>(</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    uint8_t pin </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="blink65_8h.html#af4481224d05e8f5769687a7d4806edb6">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#af4481224d05e8f5769687a7d4806edb6">digitalWrite</a>(</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    uint8_t pin,  </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    uint8_t state </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="blink65_8h.html#a6bded078d2eabd545f6afec198154207">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a6bded078d2eabd545f6afec198154207">noTone</a>(</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    uint8_t pin </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="blink65_8h.html#abf453c1659ee9fafa5af689523ac71e7">   86</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#abf453c1659ee9fafa5af689523ac71e7">pinMode</a>(</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    uint8_t pin, </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    uint8_t mode </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="blink65_8h.html#aab5ae0bc8b9c59d4490947327025152c">   94</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#aab5ae0bc8b9c59d4490947327025152c">tone</a>(</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    uint8_t  pin,      </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    uint16_t frequency </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">/*- IMPORTED USER FUNCTIONS ------------------------------------------------*/</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="blink65_8h.html#a7dfd9b79bc5a37d7df40207afbc5431f">  105</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f">  110</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f">loop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="blink65_8h.html#a63ff97b27f97c7dbe2335fcdbb731e01">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a63ff97b27f97c7dbe2335fcdbb731e01">analogWrite</a>(</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    uint8_t pin,  </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    uint8_t level </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="blink65_8h.html#af34f72641c4724c3fe3a1dc82011fe1a">   74</a></span>uint8_t <a class="code hl_function" href="blink65_8h.html#af34f72641c4724c3fe3a1dc82011fe1a">digitalRead</a>(</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    uint8_t pin </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="blink65_8h.html#af4481224d05e8f5769687a7d4806edb6">   81</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#af4481224d05e8f5769687a7d4806edb6">digitalWrite</a>(</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    uint8_t pin,  </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    uint8_t state </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="blink65_8h.html#a6bded078d2eabd545f6afec198154207">   89</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a6bded078d2eabd545f6afec198154207">noTone</a>(</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    uint8_t pin </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="blink65_8h.html#abf453c1659ee9fafa5af689523ac71e7">   96</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#abf453c1659ee9fafa5af689523ac71e7">pinMode</a>(</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    uint8_t pin, </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    uint8_t mode </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="blink65_8h.html#aab5ae0bc8b9c59d4490947327025152c">  104</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#aab5ae0bc8b9c59d4490947327025152c">tone</a>(</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    uint8_t  pin,      </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    uint16_t frequency </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">/*- IMPORTED USER FUNCTIONS ------------------------------------------------*/</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span><span class="comment">/* BLINK65_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">/*--------------------------------------------------------------------------*/</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="blink65_8h.html#a7dfd9b79bc5a37d7df40207afbc5431f">  115</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f">  120</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f">loop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif </span><span class="comment">/* BLINK65_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">/*--------------------------------------------------------------------------*/</span></div>
 <div class="ttc" id="ablink65_8h_html_a0b33edabd7f1c4e4a0bf32c67269be2f"><div class="ttname"><a href="blink65_8h.html#a0b33edabd7f1c4e4a0bf32c67269be2f">loop</a></div><div class="ttdeci">void loop(void)</div><div class="ttdoc">Called repeatedly after setup().</div></div>
 <div class="ttc" id="ablink65_8h_html_a0e0319a9c20b0e5926c903239a493a93"><div class="ttname"><a href="blink65_8h.html#a0e0319a9c20b0e5926c903239a493a93">delay</a></div><div class="ttdeci">void delay(uint32_t milliseconds)</div><div class="ttdoc">Stops execution for the given amount of milliseconds.</div></div>
 <div class="ttc" id="ablink65_8h_html_a63ff97b27f97c7dbe2335fcdbb731e01"><div class="ttname"><a href="blink65_8h.html#a63ff97b27f97c7dbe2335fcdbb731e01">analogWrite</a></div><div class="ttdeci">void analogWrite(uint8_t pin, uint8_t level)</div><div class="ttdoc">Sets the output level for an analog pin using Pulse Width Modulation (PWM).</div></div>
