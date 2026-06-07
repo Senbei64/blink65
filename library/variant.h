@@ -18,6 +18,12 @@
 /** System clock speed in hertz */
 extern uint32_t variant_clock_hz;
 
+/** Pointer to system interrupt service routine. */
+extern uint16_t * variant_irq_vec;
+
+/** Elapsed time in milliseconds */
+extern volatile uint32_t variant_time_ms;
+
 /** Pin to port LUT */
 extern uint8_t variant_port[];
 
@@ -37,7 +43,7 @@ extern uint8_t variant_ddr_mask[];
 /*- FUNCTIONS --------------------------------------------------------------*/
 
 /**
- * Variant specific initialization.
+ * Variant-specific initialization.
  */
 void initVariant(void);
 
@@ -50,12 +56,19 @@ void tonePeriod(
 );
 
 /**
- * Updates GUI to replicate the satuts of the fake builtin LED.
+ * Updates GUI to replicate the status of the fake built-in LED.
  */
 void updateBuiltinLed(
-	uint8_t mode, /**< builtin LED mode, INPUT or PUTPUT */
-	uint8_t state /**< builtin LED state, LOW or HIGH */
+	uint8_t mode, /**< built-in LED mode, INPUT or OUTPUT */
+	uint8_t state /**< built-in LED state, LOW or HIGH */
 );
+
+/**
+ * Variant-specific main interrupt service routine.
+ * 
+ * Updates the millisecond counter.
+ */
+void variant_isr(void);
 
 #endif /* VARIANT_H */
 /*--------------------------------------------------------------------------*/

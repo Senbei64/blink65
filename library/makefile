@@ -53,18 +53,23 @@ LIB_NAME_$(1)_$(2) := build/$(1)/blink65$(if $(filter debug,$(2)),d).lib
 $$(OBJ_DIR_$(1)_$(2))/%.o: CFLAGS := $(if $(filter debug,$(2)),-DDEBUG=1) -Osir
 
 # compile main library sources
-$$(OBJ_DIR_$(1)_$(2))/blink65.o: blink65.c blink65.h variant.h | setup
+$$(OBJ_DIR_$(1)_$(2))/blink65.s: blink65.c blink65.h variant.h | setup
+	cc65 -t $(1) $$(CFLAGS) -I. -o $$@ $$<
+$$(OBJ_DIR_$(1)_$(2))/blink65.o: $$(OBJ_DIR_$(1)_$(2))/blink65.s | setup
 	cl65 -t $(1) $$(CFLAGS) -I. -c -o $$@ $$<
 
 # compile target specific variant
-$$(OBJ_DIR_$(1)_$(2))/$(1)variant.s: $(1)/$(1)variant.c | setup
+$$(OBJ_DIR_$(1)_$(2))/$(1)variant_c.s: $(1)/$(1)variant.c | setup
 	cc65 -t $(1) $$(CFLAGS) -I. -o $$@ $$<
-$$(OBJ_DIR_$(1)_$(2))/$(1)variant.o: $$(OBJ_DIR_$(1)_$(2))/$(1)variant.s | setup
+$$(OBJ_DIR_$(1)_$(2))/$(1)variant_c.o: $$(OBJ_DIR_$(1)_$(2))/$(1)variant_c.s | setup
 	cl65 -t $(1) $$(CFLAGS) -I. -c -o $$@ $$<
+$$(OBJ_DIR_$(1)_$(2))/$(1)variant_s.o: $(1)/$(1)variant.s | setup
+	ca65 -t $(1) -o $$@ $$<
 
 # compose library
 $$(LIB_NAME_$(1)_$(2)): $$(OBJ_DIR_$(1)_$(2))/blink65.o\
-                        $$(OBJ_DIR_$(1)_$(2))/$(1)variant.o
+                        $$(OBJ_DIR_$(1)_$(2))/$(1)variant_c.o\
+                        $$(OBJ_DIR_$(1)_$(2))/$(1)variant_s.o
 	ar65 a $$@ $$^
 endef
 

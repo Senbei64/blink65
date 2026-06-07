@@ -1,6 +1,7 @@
 /*- blink65 - Copyright 2026 Fabio Carignano -------------------------------*/
 
 #include "variant.h"
+#include <peekpoke.h>
 #include <vic20.h>
 #include "blink65.h"
 
@@ -10,11 +11,14 @@
 #define CLOCK_PAL  1108404
 #define CLOCK_NTSC 1022727
 
+#define ACR_T1_MASK       0xC0
 #define ACR_T1_OUT_ENABLE 0x80 /* Output pulses or square-wave on PB7 */
 #define ACR_T1_FREE_RUN   0x40 /* One-shot when not free-run */
 #define ACR_SR_MASK       0x1C
 #define ACR_SR_FREE_RUN   0x10 /* Shift out free run T2 rate */
 
+#define IXR_ENABLE 0x80
+#define IXR_TIMER1 0x40
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
@@ -71,6 +75,14 @@ void initVariant(void)
         DBG("iv ntsc\n");
         variant_clock_hz = CLOCK_NTSC;
     }
+
+    noInterrupts();
+
+    /* VIA 2 timer 1 is already configured to continuously generate
+     * interrupts at 60 Hz, change period to count milliseconds */
+    POKEW(&VIA2.t1_lo, (variant_clock_hz / 1000) - 2);
+
+    interrupts();
 }
 
 void analogWrite(uint8_t pin, uint8_t level)
@@ -151,7 +163,7 @@ void tonePeriod(uint8_t pin, uint16_t period)
         VIA1.t2_lo = (uint8_t)(period - 2);
         VIA1.sr = pattern;
 
-        DBG("tp sr:$%02X t2:%u\n", pattern, period);
+        DBG("tp sr:$%02x t2:%u\n", pattern, period);
     }
 }
 

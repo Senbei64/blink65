@@ -8,10 +8,15 @@
 
 /*- CONSTATNTS -------------------------------------------------------------*/
 
-#define CLOCK  1000000
+#define CLOCK 1000000
 
+#define ACR_T1_MASK     0xC0
+#define ACR_T1_FREE_RUN 0x40
 #define ACR_SR_MASK     0x1C
 #define ACR_SR_FREE_RUN 0x10 /* Shift out free run T2 rate */
+
+#define IXR_ENABLE 0x80
+#define IXR_TIMER1 0x40
 
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
@@ -52,7 +57,26 @@ uint8_t variant_ddr_mask[NUM_DIGITAL_PINS] =
 
 void initVariant(void)
 {
+    DBG("iv\n");
+
     variant_clock_hz = 1000000;
+
+    noInterrupts();
+
+    /* Disable all VIA irq sources */
+    VIA.ier = ~IXR_ENABLE;
+
+    /* Clear all pending irq requests */
+    VIA.ifr = ~IXR_ENABLE;
+
+    /* Set VIA timer 1 to count milliseconds */
+    VIA.acr = VIA.acr & ~ACR_T1_MASK | ACR_T1_FREE_RUN;
+    POKEW(&VIA.t1_lo, (CLOCK / 1000) - 2);
+
+    /* Enable VIA timer 1 irq */
+    VIA.ier = IXR_ENABLE | IXR_TIMER1;
+
+    interrupts();
 }
 
 void analogWrite(uint8_t pin, uint8_t level)
@@ -118,7 +142,7 @@ void tonePeriod(uint8_t pin, uint16_t period)
     VIA.t2_lo = (uint8_t)(period - 2);
     VIA.sr = pattern;
 
-    DBG("tp sr:$%02X t2:%u\n", pattern, period - 2);
+    DBG("tp sr:$%02x t2:%u\n", pattern, period - 2);
 }
 
 void updateBuiltinLed(uint8_t mode, uint8_t state)

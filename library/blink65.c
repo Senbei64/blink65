@@ -1,8 +1,8 @@
 /*- blink65 - Copyright 2026 Fabio Carignano -------------------------------*/
 
 #include "blink65.h"
-#include <time.h>
 #include "variant.h"
+#include <peekpoke.h>
 
 
 /*- LOCAL MACROS -----------------------------------------------------------*/
@@ -12,17 +12,44 @@
 #define DDR(pin) *variant_ddr[PORT(pin)]
 
 
-/*- LOCAL FUNCTIONS --------------------------------------------------------*/
-
-static void init(void)
-{
-    /* ... */
-}
-
-
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
 uint32_t variant_clock_hz;
+uint16_t variant_system_isr;
+volatile uint32_t variant_time_ms;
+
+
+/*- LOCAL FUNCTIONS --------------------------------------------------------*/
+
+static uint32_t clock_ms()
+{
+    uint32_t time;
+    uint32_t verify;
+
+    do
+    {
+        time = variant_time_ms;
+        verify = variant_time_ms;
+    }
+    while(time != verify);
+
+    return time;
+}
+
+static void init(void)
+{
+    DBG("in\n");
+
+    noInterrupts();
+
+    /* Store address of previous (kernal) isr */
+    variant_system_isr = PEEKW(&variant_irq_vec);
+
+    /* Point IRQ software vector to variant ISR */
+    POKEW(&variant_irq_vec, (uint16_t)&variant_isr);
+
+    interrupts();
+}
 
 
 /*- GLOBAL FUNCTIONS -------------------------------------------------------*/
@@ -45,10 +72,9 @@ void main(void)
 
 void delay(uint32_t milliseconds)
 {
-    clock_t start = clock();
-    clock_t end = (clock_t)milliseconds * CLOCKS_PER_SEC / 1000 + start;
-    
-    while (clock() < end);
+    uint32_t start = clock_ms();
+
+    while ((clock_ms() - start) < milliseconds);
 }
 
 uint8_t digitalRead(uint8_t pin)

@@ -2,6 +2,7 @@
 
 #include "variant.h"
 #include <c64.h>
+#include <peekpoke.h>
 #include "blink65.h"
 
 
@@ -17,6 +18,9 @@
 #define CRX_LOAD         0x10
 #define CRA_CLOCK        0x20 /* 1 = CNT, 0 = system */
 #define CRB_CLOCK_MASK   0x60 /* 00 = system */
+
+#define ICR_ENABLE 0x80
+#define ICR_TIMERA 0x01
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
@@ -72,6 +76,14 @@ void initVariant(void)
     /* Timer A and B of CIA 2 use system clock */
     CIA2.cra &= ~CRA_CLOCK;
     CIA2.crb &= ~CRB_CLOCK_MASK;
+
+    noInterrupts();
+
+    /* CIA 1 timer A is already configured to continuously generate
+     * interrupts at 60 Hz, change period to count milliseconds */
+    POKEW(&CIA1.ta_lo, (variant_clock_hz / 1000) - 1);
+
+    interrupts();
 }
 
 void noTone(uint8_t pin)
