@@ -14,7 +14,7 @@ _variant_irq_vec := IRQVec
 
 .proc _variant_isr
     ;
-    ; CIA 1 TIMER A
+    ; CIA 1 TIMER B
     ;
 
     ; TODO: if doing PWM trigger a oneshot SR out
@@ -32,11 +32,8 @@ check_system_isr:
     and #$0F
     beq system_irq
 
-    ; clear all pending irq requests from CIA 1
-    lda CIA1_ICR
-
-    ; epilogue of system ISR
-    jmp $EA81
+    ; epilogue of system ISR: clear irq requests from CIA 1, restore registers
+    jmp $EA7E
 
 system_irq:
     ; jump to system ISR

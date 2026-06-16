@@ -21,6 +21,7 @@
 
 #define ICR_ENABLE 0x80
 #define ICR_TIMERA 0x01
+#define ICR_TIMERB 0x02
 
 /*- GLOBAL VARIABLES -------------------------------------------------------*/
 
@@ -73,13 +74,22 @@ void initVariant(void)
         variant_clock_hz = CLOCK_NTSC;
     }
 
-    /* Timer A and B of CIA 2 use system clock */
+    /* Stop CIA 1 timer A */ 
+    CIA1.cra &= ~CRX_RUN;
+
+    /* Start CIA 1 timer B to count milliseconds */
+    POKEW(&CIA1.tb_lo, (variant_clock_hz / 1000) - 1);
+    CIA1.crb = CIA1.crb
+             & ~(CRB_CLOCK_MASK | CRX_ONE_SHOT | CRX_OUT_ENABLE)
+             | (CRX_RUN | CRX_LOAD);
+
+    /* Timers A and B of CIA 2 use system clock */
     CIA2.cra &= ~CRA_CLOCK;
     CIA2.crb &= ~CRB_CLOCK_MASK;
 
-    /* CIA 1 timer A is already configured to continuously generate
-     * interrupts at 60 Hz, change period to count milliseconds */
-    POKEW(&CIA1.ta_lo, (variant_clock_hz / 1000) - 1);
+    /* Disable CIA 1 timer A interrupt, enable timer B's */
+    CIA1.icr = ICR_TIMERA;
+    CIA1.icr = ICR_ENABLE | ICR_TIMERB;
 }
 
 void noTone(uint8_t pin)
