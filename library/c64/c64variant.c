@@ -77,13 +77,9 @@ void initVariant(void)
     CIA2.cra &= ~CRA_CLOCK;
     CIA2.crb &= ~CRB_CLOCK_MASK;
 
-    noInterrupts();
-
     /* CIA 1 timer A is already configured to continuously generate
      * interrupts at 60 Hz, change period to count milliseconds */
     POKEW(&CIA1.ta_lo, (variant_clock_hz / 1000) - 1);
-
-    interrupts();
 }
 
 void noTone(uint8_t pin)

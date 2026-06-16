@@ -61,8 +61,6 @@ void initVariant(void)
 
     variant_clock_hz = 1000000;
 
-    noInterrupts();
-
     /* Disable all VIA irq sources */
     VIA.ier = ~IXR_ENABLE;
 
@@ -75,8 +73,6 @@ void initVariant(void)
 
     /* Enable VIA timer 1 irq */
     VIA.ier = IXR_ENABLE | IXR_TIMER1;
-
-    interrupts();
 }
 
 void analogWrite(uint8_t pin, uint8_t level)

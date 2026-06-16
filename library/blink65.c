@@ -40,15 +40,11 @@ static void init(void)
 {
     DBG("in\n");
 
-    noInterrupts();
-
     /* Store address of previous (kernal) isr */
     variant_system_isr = PEEKW(&variant_irq_vec);
 
     /* Point IRQ software vector to variant ISR */
     POKEW(&variant_irq_vec, (uint16_t)&variant_isr);
-
-    interrupts();
 }
 
 
@@ -56,10 +52,14 @@ static void init(void)
 
 void main(void)
 {
+    noInterrupts();
+
     init();
 
     /* Variant specific initializations */
     initVariant();
+
+    interrupts();
 
     /* Run the sketch */
     setup();

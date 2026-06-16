@@ -76,13 +76,9 @@ void initVariant(void)
         variant_clock_hz = CLOCK_NTSC;
     }
 
-    noInterrupts();
-
     /* VIA 2 timer 1 is already configured to continuously generate
      * interrupts at 60 Hz, change period to count milliseconds */
     POKEW(&VIA2.t1_lo, (variant_clock_hz / 1000) - 2);
-
-    interrupts();
 }
 
 void analogWrite(uint8_t pin, uint8_t level)
