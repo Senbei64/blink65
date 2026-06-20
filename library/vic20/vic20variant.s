@@ -2,6 +2,7 @@
 
 .export _variant_isr, _variant_irq_vec
 .import _variant_system_isr, _variant_time_ms
+.import _vic20_pwm_width, _vic20_pwm_pattern
 .include "vic20.inc"
 
 
@@ -17,7 +18,25 @@ _variant_irq_vec = IRQVec
     ; VIA 2 TIMER 1
     ;
 
-    ; TODO: if doing PWM trigger a oneshot SR out
+    ; if doing PWM on pin L trigger a oneshot pulse
+    ldx _vic20_pwm_width+1
+    ; sign bit set means no PWM
+    bmi end_pwm_l
+    ; acknowledge previous one-shot
+    ldy #$40
+    sty VIA1_IFR
+    ; load counter and start new one-shot
+    lda _vic20_pwm_width
+    sta VIA1_T1CL
+    stx VIA1_T1CH
+end_pwm_l:
+
+    ; if doing PWM on pin M trigger a oneshot SR out
+    lda _vic20_pwm_pattern
+    ; zero means no PWM
+    beq end_pwm_m
+    sta VIA1_SR
+end_pwm_m:
 
     ; keep track of passing time
     inc _variant_time_ms
