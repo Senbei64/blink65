@@ -1,4 +1,6 @@
 # blink65
+Blink65 is a project created and maintained by Fabio Carignano.
+
 Write Arduino-style sketches with cc65 for VIC-20, PET, and Commodore 64.
 
 ![blink board](img/blink_board.jpg)
