@@ -48,3 +48,11 @@ void tone38(void)
     }
 }
 ```
+
+### Ping pong IR between VIC-20 and Arduino duemilanove
+
+https://github.com/user-attachments/assets/1afbe075-2fae-4645-a4b7-778dc142d86a
+
+### Ping pong IR between C64U and Arduino UNO Q
+
+https://github.com/user-attachments/assets/3cfacd35-acb2-4ebf-9360-9ccf1e7f0e60
