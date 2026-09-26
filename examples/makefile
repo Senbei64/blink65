@@ -1,6 +1,6 @@
 #- blink65 - Copyright 2026 Fabio Carignano ----------------------------------
 
-SUBDIRS = blink tones irloop ramp simple64
+SUBDIRS = blink tones irloop ramp simple64 pingpong
 
 .PHONY: all clean $(SUBDIRS)
 
